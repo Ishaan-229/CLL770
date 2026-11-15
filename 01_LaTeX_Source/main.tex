@@ -1,0 +1,122 @@
+% =====================================================================
+%  Term project report -- Microfluidics
+%  Shear stress and oxygen transport in a widening Hele-Shaw chip
+%  Compile:  latexmk -pdf main.tex   (pdflatex + bibtex)
+% =====================================================================
+\documentclass[11pt,a4paper,oneside]{report}
+
+% ---------------------------------------------------------------- packages
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage[a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm,headheight=14pt]{geometry}
+\usepackage{setspace}
+\setstretch{1.12}
+\usepackage{amsmath,amssymb,mathtools,bm}
+\usepackage{graphicx}
+\usepackage{booktabs,tabularx,longtable,multirow,makecell,array}
+\usepackage{float}
+\usepackage[font=small,labelfont=bf,margin=4mm]{caption}
+\usepackage{subcaption}
+\usepackage[dvipsnames,table]{xcolor}
+\usepackage{siunitx}
+\sisetup{separate-uncertainty=true, range-phrase=--, per-mode=symbol}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{tcolorbox}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage[colorlinks=true,linkcolor=MidnightBlue,citecolor=OliveGreen,urlcolor=MidnightBlue]{hyperref}
+\usepackage[capitalise,nameinlink]{cleveref}
+\crefname{equation}{Eq.}{Eqs.}
+\Crefname{equation}{Equation}{Equations}
+
+% ---------------------------------------------------------------- layout
+\titleformat{\chapter}[hang]{\normalfont\LARGE\bfseries\color{MidnightBlue}}{\thechapter}{0.8em}{}
+\titlespacing*{\chapter}{0pt}{-8pt}{14pt}
+\titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.8em}{}
+\titleformat{\subsection}{\normalfont\normalsize\bfseries}{\thesubsection}{0.8em}{}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{1}
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\itshape Shear stress and oxygen transport in a widening Hele-Shaw chip}
+\fancyhead[R]{\small\nouppercase{\leftmark}}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername~\thechapter}{}}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\small\thepage}\renewcommand{\headrulewidth}{0pt}}
+
+% ---------------------------------------------------------------- macros
+\DeclareSIUnit\dyne{dyn}
+\DeclareSIUnit\uLmin{\micro\litre\per\minute}
+\DeclareSIUnit\dyncm{\dyne\per\centi\metre\squared}
+\newcommand{\ulmin}{\si{\uLmin}}
+\newcommand{\dyn}{\si{\dyncm}}
+\newcommand{\Csat}{C_{\mathrm{sat}}}
+\newcommand{\Cb}{\bar C}
+\newcommand{\Cbot}{C_{\mathrm{bot}}}
+\newcommand{\Ctop}{C_{\mathrm{top}}}
+\newcommand{\qmax}{q_{\max}}
+\newcommand{\Km}{K_{m}}
+\newcommand{\kp}{k_{\mathrm{PDMS}}}
+\newcommand{\taw}{\tau_{w}}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\vect}[1]{\bm{#1}}
+\newcommand{\Pe}{\mathit{Pe}}
+\newcommand{\Rey}{\mathit{Re}}
+\newcommand{\Da}{\mathit{Da}}
+\newcommand{\Bi}{\mathit{Bi}}
+\newcommand{\Sh}{\mathit{Sh}}
+% source tags used throughout the report
+\newcommand{\tagP}{\textsuperscript{[P]}}   % published (Delon et al. 2020)
+\newcommand{\tagC}{\textsuperscript{[C]}}   % our CFD
+\newcommand{\tagT}{\textsuperscript{[T]}}   % theory derived here
+\newcommand{\tagM}{\textsuperscript{[M]}}   % model estimate (reduced-order / assumed parameters)
+\newtcolorbox{keybox}[1][]{colback=MidnightBlue!4,colframe=MidnightBlue!60,boxrule=0.5pt,arc=1mm,left=2mm,right=2mm,top=1mm,bottom=1mm,fonttitle=\bfseries\small,title=#1}
+
+\graphicspath{{figures/}}
+
+% =====================================================================
+\begin{document}
+
+\input{chapters/titlepage}
+
+\pagenumbering{roman}
+\input{chapters/abstract}
+\tableofcontents
+\listoffigures
+\listoftables
+\input{chapters/nomenclature}
+\cleardoublepage
+\pagenumbering{arabic}
+
+\input{chapters/ch01_introduction}
+\input{chapters/ch02_literature}
+\input{chapters/ch03_geometry}
+\input{chapters/ch04_governing_flow}
+\input{chapters/ch05_theory_flow}
+\input{chapters/ch06_numerics}
+\input{chapters/ch07_validation}
+\input{chapters/ch08_oxygen_motivation}
+\input{chapters/ch09_oxygen_equations}
+\input{chapters/ch10_oxygen_analytical}
+\input{chapters/ch11_oxygen_results}
+\input{chapters/ch12_discussion}
+\input{chapters/ch13_limitations}
+\input{chapters/ch14_conclusion}
+
+\bibliographystyle{unsrtnat}
+\bibliography{references}
+
+\appendix
+\input{chapters/appA_missing}
+\input{chapters/appB_reproducibility}
+
+\end{document}

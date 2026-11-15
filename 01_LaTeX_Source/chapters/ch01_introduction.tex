@@ -1,0 +1,57 @@
+\chapter{Introduction and Problem Definition}
+\label{ch:intro}
+
+\section{Microfluidics and transport at the microscale}
+
+Microfluidic devices handle liquids in channels whose smallest dimension is of the order of \SIrange{10}{500}{\micro\metre} \citep{Whitesides2006,Squires2005}. Three consequences of this small scale govern everything in this report.
+\begin{enumerate}
+\item \textbf{Viscous forces dominate inertia.} With a velocity of \SI{0.1}{mm/s} and a gap of \SI{145}{\micro\metre}, the Reynolds number of a water-like medium is of order $10^{-2}$. The flow is laminar and, to a very good approximation, a Stokes flow. It is linear in the driving pressure and fully reversible, so the velocity field is set by the geometry alone.
+\item \textbf{Diffusion is fast across the channel and slow along it.} The time for oxygen to diffuse across a \SI{145}{\micro\metre} gap is $h^2/D\approx\SI{7}{s}$, whereas the medium may take minutes to an hour to pass through the device. Mixing across the gap is therefore almost complete, while transport along the channel is carried by the flow.
+\item \textbf{Surfaces are large compared with volumes.} Anything that happens at a wall, such as the drag that produces shear stress or the uptake of oxygen by cells attached to the floor, has a strong effect on the fluid.
+\end{enumerate}
+
+These features make microchannels well suited to cell culture under flow, which is the basis of organ-on-chip technology \citep{BhatiaIngber2014,Zhang2018,Kim2012}. They also mean that the relevant fields (velocity, pressure, wall shear stress and solute concentration) can often be predicted analytically. The simplest predictions can, however, fail in specific parts of a real device.
+
+\section{Why wall shear stress and oxygen both matter}
+
+Epithelial and endothelial cells sense the fluid shear stress (FSS) on their apical surface, and their structure, barrier function and metabolism change with it \citep{Delon2019,Delon2020}. To study this dependence systematically, cells must be exposed to known shear stresses. The quantity that must be predicted is therefore the wall shear stress $\taw$ on the cell-bearing floor, both along the channel and across its width.
+
+A flow that is slow enough to apply physiologically low shear also delivers little oxygen. Cultured cells consume oxygen continuously, and oxygen delivery is a recognised, often unmeasured, limitation of cell culture \citep{Place2017,Wagner2011}. In a perfused microchannel oxygen reaches the cells by convection with the medium, by diffusion across the gap and, if the walls are made of gas-permeable PDMS, by diffusion through the walls \citep{Mehta2007}. A device designed only for shear could expose part of its cells to hypoxia without anyone noticing. If those cells are also the ones that see the lowest shear, the two effects would be confounded in the biological read-out. Solving the flow field alone cannot reveal this; a transport model built on the flow field is required.
+
+\section{The device studied}
+
+The Hele-Shaw device of Delon \emph{et al.} \citep{Delon2020}, which builds on the linear-shear flow chamber of Usami \emph{et al.} \citep{Usami1993}, is a shallow channel whose width increases hyperbolically along its axis:
+\begin{equation}
+w(x)=\frac{w_1L}{L-x}.
+\label{eq:intro_width}
+\end{equation}
+Because the flow rate is the same through every cross-section and the gap is much smaller than the width, the shear on the floor is inversely proportional to the width. It therefore decreases \emph{linearly} from inlet to outlet, and one device spans a range of shear stresses (\cref{ch:theory}). The geometry was chosen for this project for four reasons:
+\begin{itemize}
+\item it has a published design formula and a published CFD study \citep{Delon2020}, so it can be validated;
+\item its shear varies continuously, so the deviation from the design formula can be studied as a function of position and local aspect ratio;
+\item its widening section ends in a sharp \ang{45} outlet corner where the assumptions of the formula break down, which tests the limits of the theory;
+\item the shear and the oxygen supply both fall in the downstream direction, so the oxygen question raised above arises naturally in this geometry.
+\end{itemize}
+
+\section{Objectives and research questions}
+
+The project has two components.
+
+\paragraph{Part A, validation of the reference paper.} Reproduce the geometry and flow conditions of Delon \emph{et al.}, simulate the flow in ANSYS Fluent, derive the governing theory, and quantify how closely the simulations agree with the published results and with the theory.
+
+\paragraph{Part B, extension to oxygen transport.} Formulate an oxygen transport model for the same geometry and flow field, derive closed-form solutions where possible, and evaluate oxygen availability at the cell layer.
+
+\noindent Five research questions follow:
+\begin{enumerate}[label=\textbf{RQ\arabic*}]
+\item How accurately can the published flow behaviour be reproduced numerically?
+\item How well do the theoretical predictions agree with the numerical simulations, and where and why do they fail?
+\item What physical phenomena are revealed by the velocity, pressure and shear stress distributions?
+\item How does the widening geometry influence oxygen transport to the cells?
+\item What insights does the extended oxygen transport model provide for the design and operation of the chip?
+\end{enumerate}
+
+\section{Scope and status of the results}
+
+Part A is based on our own Fluent results \tagC. Part B is based entirely on theory and a reduced-order model \tagM: an oxygen CFD set-up (user-defined scalar with a Michaelis--Menten wall flux) was prepared, but at the time of writing it had not been run. The oxygen chapters therefore present predictions to be tested, not validated results. The uptake rate and the Michaelis constant are illustrative values from the literature, not measured values for the cell lines of the reference paper, and are treated as such in the sensitivity analysis. \Cref{app:missing} lists all information that was missing or assumed.
+
+The report is organised as follows. \Cref{ch:lit} reviews the reference paper. \Cref{ch:geometry} describes the geometry. \Cref{ch:governing,ch:theory} develop the flow equations and the analytical model. \Cref{ch:numerics} documents the CFD set-up and \cref{ch:validation} validates it. \Cref{ch:o2motivation,ch:o2equations,ch:o2analytical,ch:o2results} develop and apply the oxygen model. \Cref{ch:discussion,ch:limitations,ch:conclusion} discuss the whole project, its limitations and its conclusions.

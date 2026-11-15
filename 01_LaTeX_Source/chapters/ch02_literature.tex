@@ -1,0 +1,73 @@
+\chapter{Literature Review and Reference Paper}
+\label{ch:lit}
+
+\section{Background: shear stress devices for cell culture}
+
+Parallel-plate flow chambers are the classical way to apply a known shear stress to adherent cells. In a gap of height $h$ much smaller than the width, the velocity profile across the gap is parabolic and the wall shear stress is $\taw=6\mu Q/(wh^2)$ \citep{Bruus2008,BSL2002}. A uniform chamber applies a single shear stress, so testing several shear levels requires several devices or experiments, each with its own variability. Usami \emph{et al.} \citep{Usami1993} showed that a chamber whose width follows \cref{eq:intro_width} produces a shear stress that decreases linearly along the axis. One experiment then covers a continuous range of shear. Delon \emph{et al.} adapted this design to soft-lithography PDMS chips for organ-on-chip models \citep{Delon2019,Delon2020}.
+
+The shear felt by a cell is not exactly the wall shear of an empty channel, because the cell protrudes into the flow. Gaver and Kute \citep{GaverKute1998} modelled a cell adhering to a microchannel wall, and on this basis Delon \emph{et al.} estimated the shear experienced by the cells as $\tau_{\mathrm{cell}}\approx3\,\taw$. In this report we work with $\taw$ itself and quote $\tau_{\mathrm{cell}}$ only where the paper does.
+
+\section{The reference paper: Delon \emph{et al.} (2020)}
+
+\paragraph{Motivation.} Most studies compare one shear level with static culture. Delon \emph{et al.} wanted to resolve the effect of shear systematically within a single device and to know the actual shear everywhere in the channel, so that cell images could be assigned correct shear values \citep{Delon2020}. A companion paper applied the device to Caco-2 intestinal monolayers and reported shear-dependent changes in mucus production, tight junctions, microvilli and metabolic activity \citep{Delon2019}.
+
+\paragraph{Physical system and geometry.} The channel walls follow $\pm w(x)/2$ with $w(x)=w_1L/(L-x)$, drawn in AutoCAD at \SI{0.1}{cm} intervals. The channel is closed with outlet walls at \ang{45} to the axis, and inlet and outlet holes are added. The mould is SU-8 of nominal thickness \SI{150}{\micro\metre}. The chip is a \SI{5}{mm} thick PDMS layer bonded to a glass cover slip, and the cells grow on the glass floor \tagP.
+
+\paragraph{Governing physics and assumptions.} The medium was treated as an isothermal, viscous, incompressible Newtonian liquid with constant properties. The flow was laminar, gravity was neglected, and the cells were not resolved \tagP. The design formula (their Eq.~2) is the parallel-plate Hele-Shaw result
+\begin{equation}
+\taw(x)=\frac{6\mu Q}{h^2w_1}\left(1-\frac{x}{L}\right),
+\label{eq:lit_eq2}
+\end{equation}
+which assumes infinite parallel plates, i.e.\ no side walls \tagP. This equation is derived in \cref{ch:theory}.
+
+\paragraph{Numerical methodology.} The paper used a three-dimensional ANSYS Fluent model of the chamber. It had a uniform mass-flow inlet, atmospheric pressure at the outlet and no-slip walls. The mesh was tetrahedral, with a stated maximum size of \SI{5}{\micro\metre} and a reported mesh sensitivity of \SI{1.4}{\percent}. The solver used SIMPLE coupling, PRESTO! pressure interpolation, second-order upwind convection and least-squares cell-based gradients. The simulation was transient, with a time step of \SI{e-7}{s}, up to 30 iterations per step and an absolute residual criterion of \num{e-5}. It was analysed once the flow had become steady \tagP.
+
+\paragraph{Main results.} The paper reports the following \tagP:
+\begin{enumerate}
+\item The wall shear stress from the CFD decreases from inlet to outlet, from $\sim$\SI{0.01}{\dyncm} to \SI{0.001}{\dyncm} at \SI{0.22}{\uLmin} and from \SI{0.0447}{\dyncm} to \SI{0.0059}{\dyncm} at \SI{1}{\uLmin}.
+\item The shear at the five sections ($x=0.5$--\SI{4.5}{cm}) ``matches'' \cref{eq:lit_eq2}. This is shown graphically; no error values are given.
+\item The cell shear ranges, from the equation and from the CFD, are \SIrange{0.03}{0.002}{\dyncm} and $\sim$\SIrange{0.03}{0.003}{\dyncm} at \SI{0.22}{\uLmin}, and \SIrange{0.135}{0.008}{\dyncm} and $\sim$\SIrange{0.134}{0.017}{\dyncm} at \SI{1}{\uLmin} (their Table~1).
+\item For imaging, the shear is ``constant'' within a distance $D_{\max}$ of the axis at each section: 0.34, 0.47, 0.82, 1.5 and \SI{3.84}{mm} at S1--S5. The distance from the wall at which the shear becomes constant is $D_{\mathrm{wall}}=0.22$, 0.24, 0.18, 0.16 and \SI{0.33}{mm} (their Table~2). These distances are stated to be the same at 0.22, 1 and \SI{120}{\uLmin}.
+\end{enumerate}
+
+\paragraph{Inconsistencies in the reference paper.} Three details in the paper are inconsistent or incomplete, and they matter for the comparison:
+\begin{enumerate}[label=(\roman*)]
+\item The channel height is \SI{150}{\micro\metre} in the list of CFD inputs but \SI{0.0145}{cm} (\SI{145}{\micro\metre}) in the parameters of the equation. The SU-8 thickness is \SI{150}{\micro\metre}.
+\item The equation uses $L=\SI{5.3}{cm}$ (``length of the first part of the channel''). However, the stations refer to a channel of about \SI{5}{cm}, and the paper's own seeding-area integral, $\int_0^{4.5}w\,\dd x=\SI{1.151}{cm^2}$, is obtained only with $L=\SI{5}{cm}$.
+\item The criterion used for ``constant'' shear in Table~2 is not stated. A ``tetrahedron structured'' mesh with a \SI{5}{\micro\metre} maximum size would need of the order of $10^9$ cells for a \SI{20}{\milli\metre\cubed} domain, so the stated size most likely refers to the spacing across the height only.
+\end{enumerate}
+
+\section{Why this paper is a suitable reference}
+
+The paper provides a closed-form design equation, a full CFD methodology, numerical results at named stations and flow rates, and a criterion for cell imaging. Each of these can be checked independently. The geometry is simple enough to treat analytically at several levels of approximation, yet it has a region (the outlet corner) where the simple theory must fail. The paper does not consider oxygen supply, even though the device is made of gas-permeable PDMS and is operated at very low flow rates. This gap motivates Part B of the present work.
+
+\section{What is reproduced and what is extended}
+
+\Cref{tab:paper_vs_project} compares the published study with the present project. The validated items are: the shear distribution along the axis and its agreement with \cref{eq:lit_eq2}; the shear range at 0.22 and \SI{1}{\uLmin}; the width of the uniform-shear zone at S1--S5; and its independence of the flow rate. The extensions are:
+\begin{enumerate}[label=(\alph*)]
+\item a side-wall-corrected theory (T2) and a two-dimensional planform model (T3), which explain where and why \cref{eq:lit_eq2} deviates;
+\item a quantitative uniformity analysis at three tolerance levels;
+\item a pressure and momentum-balance analysis;
+\item the oxygen transport model of Part B.
+\end{enumerate}
+
+\begin{table}[htbp]
+\centering
+\caption{Published study \citep{Delon2020} compared with the present project. [P] published, [C] present CFD, [T] present theory.}
+\label{tab:paper_vs_project}
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.17\linewidth}X X@{}}
+\toprule
+Parameter & Published study \tagP & Present project\\
+\midrule
+Geometry & Hyperbolic widening channel, \ang{45} outlet walls, inlet/outlet holes (punched ports) & Same law; \SI{2}{mm} straight lead-in, hyperbola to $x_t=\SI{45}{mm}$, \ang{45} walls, \SI{1.5}{mm}$\times$\SI{1}{mm} outlet duct; ports not modelled \tagC\\
+Dimensions & $w_1=\SI{1}{mm}$; $L=\SI{5.3}{cm}$ in the equation; $h=\SI{150}{\micro\metre}$ (CFD) or \SI{145}{\micro\metre} (equation) & $w_1=\SI{1}{mm}$, $L=\SI{50}{mm}$, $w_{\max}=\SI{10}{mm}$, $h=\SI{145}{\micro\metre}$ (assumed, not in the exports)\\
+Fluid properties & $\mu=\SI{0.94}{cP}$, $\rho=\SI{981.8}{kg/m^3}$ & Identical, read from the Fluent report \tagC\\
+Flow conditions & 0.22 and \SI{1}{\uLmin} (also \SI{120}{\uLmin} in the supplement) & $\dot m=\num{3.6e-9}$, \num{1.636e-8}, \SI{1.964e-6}{kg/s}, i.e.\ $Q=0.2200$, $0.9998$, \SI{120.02}{\uLmin} \tagC\\
+Governing equations & Incompressible Navier--Stokes, laminar, isothermal, Newtonian & Same (steady); plus T1/T2/T3 lubrication models \tagT\\
+Boundary conditions & Uniform mass-flow inlet, atmospheric outlet, no-slip walls & Mass-flow inlet, pressure outlet \SI{0}{Pa} gauge, no-slip walls \tagC\\
+Numerical method & Fluent; tetrahedral mesh (``max.\ \SI{5}{\micro\metre}''); transient, $\Delta t=\SI{e-7}{s}$; SIMPLE, PRESTO!, 2nd-order upwind, LSCB gradients; absolute residuals $10^{-5}$; mesh sensitivity \SI{1.4}{\percent} & Fluent 2024 R1, 3D double precision, pressure-based, \emph{steady}; SIMPLEC, PRESTO!, 2nd-order upwind; URF 0.3/0.7; mesh about 9 layers across $h$ (inferred); no mesh study yet \tagC\\
+Output quantities & $\taw(x)$ on the axis, strain-rate profiles along $z$ and $y$, $\tau_{\mathrm{cell}}=3\taw$, $D_{\mathrm{wall}}$ and $D_{\max}$ & $p(x)$, $\dd p/\dd x$, $\taw(x)$ on the axis, $\taw(y)$ and $|\vect u|(y)$ at S1--S5, uniform half-width $d(\varepsilon)$, flow-rate scaling \tagC; oxygen model \tagM\\
+\bottomrule
+\end{tabularx}
+\end{table}

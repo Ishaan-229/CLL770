@@ -1,0 +1,44 @@
+\chapter{Missing Information, Assumptions and Data Requests}
+\label{app:missing}
+
+\Cref{tab:missing} lists every piece of information that was missing, inferred or assumed, how it was handled, and what is needed to remove the uncertainty.
+
+\begin{small}
+\begin{longtable}{@{}p{0.22\linewidth}p{0.36\linewidth}p{0.36\linewidth}@{}}
+\caption{Missing or assumed information.}\label{tab:missing}\\
+\toprule
+Item & How it was handled & What is needed\\
+\midrule
+\endfirsthead
+\toprule
+Item & How it was handled & What is needed\\
+\midrule
+\endhead
+\multicolumn{3}{@{}l}{\emph{Flow simulations}}\\
+Channel height $h$ & Not in the exports; \SI{145}{\micro\metre} assumed. Supported by the momentum balance (143.9--\SI{145.8}{\micro\metre}) & Fluent \emph{Mesh} $\to$ domain extents\\
+\SI{2}{mm} lead-in & Inferred from contour maxima against the axial pressure & Geometry file or domain extents\\
+Mesh type, cell count, quality & Not available; about nine layers across $h$ inferred from node levels & Mesh report; mesh images\\
+Mesh independence & Not performed (one mesh) & Study of \cref{sec:num_gci}\\
+Convergence history, mass balance & Not exported; convergence judged from internal consistency & Residual plot; \emph{Reports $\to$ Fluxes}\\
+Which residual settings produced the exports & Unknown (absolute $10^{-6}$ or ``none'') & Statement from the person who ran the cases\\
+Gradient scheme, initialisation & Not in \texttt{report.xml} & Solution methods panel\\
+$u_x(z)$ across the gap & Not testable: exports are $|\vect u|$ against $y$ without $z$ & Line exports along $z$ at S1--S5 ($x$-velocity, with $z$)\\
+Floor-only wall shear & Floor and lid nodes mixed in the cross-section exports; separated by pairing & Separate \texttt{wall\_bottom} line exports\\
+Report file in folder \texttt{q=1.636e-8} & Belongs to the \SI{120}{\uLmin} run; data assigned by folder name & --\\
+Flow-rate label ``0.2'' & Mass flow gives \SI{0.2200}{\uLmin}; used throughout & --\\
+\multicolumn{3}{@{}l}{\emph{Reference paper}}\\
+Published curves & Only ranges and tables used; no RMSE against the paper possible & Digitised Figs.~2--3 of \citep{Delon2020}, or the authors' data\\
+Paper's $h$ and $L$ & Inconsistent (150 vs \SI{145}{\micro\metre}; 5.3 vs \SI{5}{cm}); \SI{145}{\micro\metre} and \SI{50}{mm} used & --\\
+Uniformity criterion of Table~2 & Not stated; compared at $\pm2$, 5, \SI{10}{\percent} & --\\
+\multicolumn{3}{@{}l}{\emph{Oxygen transport}}\\
+Oxygen CFD results & None; set-up prepared, not run. All oxygen results are model predictions & UDS runs (\cref{ch:limitations})\\
+Uptake rate per cell, confluent density & Illustrative \SI{20}{amol/s} and \SI{2e5}{cm^{-2}} & Measured OCR and density for Caco-2/A549\\
+$\Km$ & Hepatocyte value (\SI{0.5}{mmHg}) & Cell-line value (affects only the anoxic transition)\\
+Effective PDMS permeability, immersion & 800 Barrer, lid in air & Oxygen measurements in the device\\
+Oxygen measurements & None & Optode film or probe data along the channel\\
+\multicolumn{3}{@{}l}{\emph{Figures}}\\
+Mesh images & Not available, not shown & Screenshots of the mesh at S1 and S5\\
+Contour images & Raster screenshots with automatic colour ranges; used as supplied & ASCII field exports for re-plotting\\
+\bottomrule
+\end{longtable}
+\end{small}

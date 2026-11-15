@@ -1,0 +1,58 @@
+\chapter*{Nomenclature}
+\addcontentsline{toc}{chapter}{Nomenclature}
+
+\small
+\begin{longtable}{@{}p{0.16\linewidth}p{0.62\linewidth}p{0.16\linewidth}@{}}
+\toprule
+Symbol & Meaning & Unit\\
+\midrule
+\endhead
+\multicolumn{3}{@{}l}{\emph{Geometry and coordinates}}\\
+$x,\,y,\,z$ & axial (flow), transverse (width) and height coordinates; $z=0$ on the cell-bearing floor & m\\
+$\eta=z/h$ & dimensionless height & --\\
+$L$ & hyperbola parameter (length scale of the widening law) & m\\
+$w_1,\ w(x),\ w_{\max}$ & inlet width, local width $w_1L/(L-x)$, maximum width & m\\
+$x_t$ & end of the hyperbolic section, $L(1-w_1/w_{\max})$ & m\\
+$h$ & channel height (gap) & m\\
+$A(x)$ & floor area upstream of $x$, $\int_0^x w\,\dd x'=w_1L\ln[L/(L-x)]$ & \si{m^2}\\
+$D_h$ & hydraulic diameter $2wh/(w+h)$ & m\\
+S1--S5 & measurement stations at $x=5,15,25,35,45$ mm & --\\
+\multicolumn{3}{@{}l}{\emph{Flow}}\\
+$\vect u=(u_x,u_y,u_z)$ & velocity vector and its components & \si{m/s}\\
+$\bar U$ & cross-sectional mean velocity $Q/(wh)$ & \si{m/s}\\
+$p$ & static (gauge) pressure & Pa\\
+$Q,\ \dot m$ & volumetric and mass flow rate & \si{m^3/s}, \si{kg/s}\\
+$\mu,\ \rho,\ \nu$ & dynamic viscosity, density, kinematic viscosity & \si{Pa.s}, \si{kg/m^3}, \si{m^2/s}\\
+$\taw$ & wall shear stress on the floor & Pa\\
+$f(h/w)$ & flux factor of a rectangular duct relative to parallel plates & --\\
+$\delta_\varepsilon$ & side-wall layer in which the floor shear is more than $\varepsilon$ below the core value & m\\
+$d(\varepsilon)$ & half-width of the central band with $|\tau(y)/\tau(0)-1|\le\varepsilon$ & m\\
+$R_{\mathrm{hyd}}$ & hydraulic resistance $\Delta p/Q$ & \si{Pa.s/m^3}\\
+\multicolumn{3}{@{}l}{\emph{Oxygen transport}}\\
+$C$ & dissolved oxygen concentration & \si{mol/m^3}\\
+$\Csat$ & air-saturated (inlet) concentration & \si{mol/m^3}\\
+$\Cb(x)$ & cup-mixing (flow-weighted mean) concentration & \si{mol/m^3}\\
+$\Cbot,\ \Ctop$ & concentration at the floor (cells) and at the lid & \si{mol/m^3}\\
+$D$ & diffusivity of O$_2$ in the medium & \si{m^2/s}\\
+$q$ & areal uptake flux of the monolayer & \si{mol.m^{-2}.s^{-1}}\\
+$\qmax,\ \Km$ & maximum areal uptake, Michaelis--Menten constant & \si{mol.m^{-2}.s^{-1}}, \si{mol/m^3}\\
+$\kp$ & mass-transfer coefficient of the PDMS lid, $P/(t_{\mathrm{PDMS}}\alpha)$ & \si{m/s}\\
+$N$ & oxygen flux supplied through the lid & \si{mol.m^{-2}.s^{-1}}\\
+$a_s,\ a_c$ & coefficients of the fully developed wall-to-bulk relations (Eq.~\ref{eq:ox_superpos}) & --\\
+$x_{\mathrm{crit}}$ & position beyond which the floor is anoxic (impermeable walls) & m\\
+\multicolumn{3}{@{}l}{\emph{Dimensionless groups}}\\
+$\Rey_{D_h}$, $\Rey^*$ & Reynolds number on $D_h$; reduced (lubrication) Reynolds number $\Rey_h\,h/w$ & --\\
+$\Pe_h,\ \Pe_L$ & P\'eclet numbers $\bar U h/D$ and $\bar U L/D$ & --\\
+$\Da_w$ & wall Damk\"ohler number $\qmax h/(D\Csat)$ & --\\
+$\Da_{\mathrm{conv}}$ & convective Damk\"ohler number $\qmax A_{\mathrm{cells}}/(Q\Csat)$ & --\\
+$\Bi$ & Biot number of the lid $\kp h/D$ & --\\
+$\Phi_{\mathrm{PDMS}}$ & lid supply number $\kp\Csat/\qmax$ & --\\
+$\Sh$ & Sherwood number based on $2h$ & --\\
+\multicolumn{3}{@{}l}{\emph{Model labels}}\\
+T1 & parallel-plate Hele-Shaw theory (Eq.~2 of the reference paper) & \\
+T2 & T1 corrected by the exact rectangular-duct flux factor & \\
+T3 & two-dimensional depth-averaged Hele-Shaw model of the full planform & \\
+IMP, PDMS, SAT & impermeable lid, permeable PDMS lid (Robin condition), saturated lid & \\
+\bottomrule
+\end{longtable}
+\normalsize

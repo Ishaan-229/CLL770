@@ -1,0 +1,45 @@
+\chapter{Limitations, Scope for Improvement and Future Work}
+\label{ch:limitations}
+
+\section{Limitations}
+
+\paragraph{Theoretical assumptions.}
+\begin{itemize}
+\item T1 assumes infinite plates and a slowly varying planform. It is invalid near S5 and in the outlet.
+\item T2 assumes locally fully developed flow in each rectangular section.
+\item T3 is depth-averaged and does not resolve the side-wall layer or three-dimensional effects at the corners.
+\item All three are Stokes-flow models. This is justified by the CFD, which shows a non-linearity of at most \SI{0.7}{\percent}.
+\end{itemize}
+
+\paragraph{Idealised boundary conditions.} The inflow enters as a uniform velocity at the face of a \SI{2}{mm} lead-in. The punched ports, tubing and bubble trap of the real device were not modelled. The outlet is at a fixed pressure. These choices do not affect the hyperbolic section, but they do affect the absolute pressures.
+
+\paragraph{Numerical discretisation and mesh resolution.} Only one mesh was run. About nine cells span the gap and the wall nodes are \SIrange{0.08}{0.10}{mm} apart near the side walls. The uniform \SI{-5}{\percent} offset of shear and pressure gradient is most probably discretisation error, but this has not been demonstrated. The mesh type and quality metrics were not documented in the exports.
+
+\paragraph{Missing data and convergence evidence.} The channel height and the lead-in were inferred rather than read from the set-up. The velocity was exported without the $z$ coordinate. Neither the residual history nor the mass balance was exported.
+
+\paragraph{Reference data.} The published results are available only as plots and ranges. The paper's height, length and uniformity criterion are partly inconsistent, so the comparison with it is semi-quantitative.
+
+\paragraph{Oxygen model.}
+\begin{itemize}
+\item The uptake parameters ($\qmax$, $\Km$) are illustrative, not measured for Caco-2 or A549 cells, and the conclusions depend on $\qmax$ above all.
+\item The model is steady. It ignores re-oxygenation transients after medium changes and the hours needed to equilibrate the PDMS.
+\item The PDMS is represented by a steady Robin coefficient. Partitioning, diffusion inside the PDMS, water immersion and permeability loss by protein adsorption are not modelled.
+\item The reduced-order model is uniform across the width. It neglects the slower side-wall layers, where depletion with impermeable walls will be stronger.
+\item The monolayer is a surface flux. Cell height, its effect on the flow and the variation of uptake with shear or with cell differentiation are ignored.
+\item There is no experimental validation of any oxygen prediction.
+\end{itemize}
+
+\section{Future work}
+
+Each item below addresses one of the limitations above.
+
+\begin{enumerate}
+\item \textbf{Mesh-independence study (highest priority).} Run the two-factor study of \cref{sec:num_gci} at \SI{1}{\uLmin} ($N_z=9$, 18, 36; $\Delta s=100$, 50, \SI{25}{\micro\metre}) and report $\mathrm{GCI}_{\mathrm{fine}}$, the observed order and the extrapolated values. If the shear rises towards T2 with $N_z$, the \SI{-5}{\percent} offset is confirmed as discretisation error and the absolute CFD values can be corrected.
+\item \textbf{Complete exports.} Report the inlet/outlet mass flux, the residual history and the domain extents. Export $u_x(z)$ along lines at S1--S5, so the parabola and a profile-fit wall shear can be tested, and export the floor ($z=0$) wall shear alone along fine lines across the width.
+\item \textbf{Oxygen CFD.} Run the prepared Fluent case: one user-defined scalar (UDS) on the frozen flow, with the Michaelis--Menten floor flux and the PDMS Robin flux implemented as user-defined functions (UDFs). Start with the mandatory sign and mass-balance test (zero-order uptake with impermeable walls must satisfy $Q(\Csat-\Cb_{\mathrm{out}})=\qmax A_{\mathrm{cells}}$). Then run IMP, PDMS and SAT at the three flow rates, and compare with \cref{tab:o2_results}. The CFD will quantify the extra depletion in the side-wall layers and near the outlet corner, which the reduced-order model cannot capture.
+\item \textbf{Transient oxygen transport.} Simulate re-oxygenation after a medium change or a change of flow, over 1--\SI{2}{h}.
+\item \textbf{Conjugate PDMS transport.} Model oxygen transport inside the lid and side walls (solved in partial pressure, to handle partitioning). Vary the lid thickness, permeability ageing and water immersion.
+\item \textbf{Measured kinetics.} Measure the oxygen consumption rate and the confluent density of the cell lines, and replace the illustrative $\qmax$ and $\Km$. Consider uptake that depends on the shear or on the differentiation state of the cells.
+\item \textbf{Experimental validation.} Measure the pressure drop (flow), and the oxygen concentration at the floor using an oxygen-sensing film (for example a PtTFPP optode) along the channel at 0.22 and \SI{1}{\uLmin}.
+\item \textbf{Parametric design.} Use the closed forms to choose $h$, $w_1$, $L$ and $Q$ that meet a target shear range while keeping $\Da_{\mathrm{conv}}<1$ or $\Phi_{\mathrm{PDMS}}\gg1$. Check selected designs with CFD.
+\end{enumerate}

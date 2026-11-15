@@ -1,0 +1,32 @@
+\chapter{Motivation and Development of the Oxygen Transport Model}
+\label{ch:o2motivation}
+
+\section{Why oxygen matters in this device}
+
+Aerobic cells use oxygen continuously. Their uptake rate spans more than two orders of magnitude between cell types, from below 1 to more than \SI{350}{amol} per cell per second \citep{Wagner2011}. Oxygen is poorly soluble in water: air-saturated culture medium at \SI{37}{\celsius} holds only about \SI{0.18}{mol/m^3} \citep{Wenger2015}. A monolayer can therefore deplete the medium above it quickly unless the medium is renewed. In static culture this is a known, often unmeasured, limitation \citep{Place2017}. Even in Caco-2 cultures, which rely largely on glycolysis, the pericellular oxygen level depends on cell density and on the height of the medium \citep{Zeitouni2015}.
+
+In organ-on-chip devices, flow renews the medium, but the flow rates that give physiologically low shear also deliver little oxygen. The widening Hele-Shaw chip is an extreme case. It is designed to reach very low shear (down to \SI{e-3}{\dyncm}) at flow rates of a fraction of a \ulmin, and the lowest shear occurs in the widest, downstream part of the channel, which receives medium that has already passed over the upstream cells. The same geometric feature that creates the shear gradient may therefore create an oxygen gradient in the same direction. If it does, a biological response attributed to low shear could in fact be a response to low oxygen. PDMS is permeable to oxygen and can supply it through the walls. Measurements in perfused PDMS bioreactors nevertheless show that cell uptake can produce axial oxygen gradients despite this permeability \citep{Mehta2007}.
+
+The flow solution of Part A gives the shear field but says nothing about oxygen. Whether a cell at a given position is well supplied depends on three things together:
+\begin{itemize}
+\item how much oxygen the flow brings to that position (convection);
+\item how fast it crosses the gap to the floor (diffusion);
+\item how much the upstream cells have already removed (consumption).
+\end{itemize}
+A transport model is needed, and the validated flow field is its input.
+
+\section{The physical problem}
+
+\begin{description}[leftmargin=0pt]
+\item[Where oxygen enters.] Medium equilibrated with the incubator atmosphere enters at the inlet. The reference protocol keeps the medium reservoir and tubing inside the incubator \citep{Delon2020}. If the lid and side walls are gas-permeable, oxygen also enters through the PDMS from the incubator air.
+\item[Where it is transported.] Oxygen is carried along the channel by the flow and diffuses across the gap. Axial diffusion is negligible compared with convection, as shown below.
+\item[Where it is consumed.] Oxygen is consumed only by the cell monolayer on the glass floor ($z=0$). The medium itself does not consume oxygen.
+\item[Role of diffusion.] Diffusion across the \SI{145}{\micro\metre} gap carries oxygen from the bulk to the cells, and from the lid into the bulk. Its time scale ($\sim\SI{7}{s}$) is short compared with the residence time, so the concentration across the gap is nearly uniform.
+\item[Role of convection.] Convection replaces the medium that the cells deplete. Its capacity, $Q\Csat$, is proportional to the flow rate and therefore to the shear.
+\item[Included.] The model includes steady convection--diffusion with the validated, frozen velocity field, Michaelis--Menten uptake by the monolayer, and three wall conditions (impermeable, PDMS, saturated).
+\item[Neglected.] The model neglects transient re-oxygenation after medium changes, the oxygen transport inside the PDMS (only its steady resistance is kept), cell growth, cell-to-cell variation of uptake, the geometric effect of the cells on the flow, oxygen partitioning at the PDMS--medium interface, and the ports and tubing.
+\end{description}
+
+\section{Strategy}
+
+The oxygen problem is developed in the same way as the flow problem. \Cref{ch:o2equations} starts from the general species balance and reduces it with explicit, quantified assumptions. \Cref{ch:o2analytical} derives closed-form solutions for the cases that admit them, and a reduced-order (``1.5-D'') model for the general Michaelis--Menten case; the closed forms provide a check on the reduced-order model. \Cref{ch:o2results} applies both to the three flow rates and the three wall conditions, and discusses what they imply for the device.

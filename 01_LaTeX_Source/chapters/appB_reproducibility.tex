@@ -1,0 +1,36 @@
+\chapter{Reproducibility: Files and Scripts}
+\label{app:repro}
+
+All numbers in this report can be regenerated from the files in the project directory.
+
+\begin{small}\noindent
+\begin{tabularx}{\linewidth}{@{}>{\raggedright\arraybackslash}p{0.45\linewidth}X@{}}
+\toprule
+Path & Content\\
+\midrule
+\texttt{main.tex}, \path{chapters/*.tex}, \texttt{references.bib} & LaTeX source of this report (compile with \texttt{latexmk -pdf main.tex})\\
+\path{figures/} & All figures used in the report\\
+\path{data/raw_fluent_exports/} & The Fluent XY exports and report files exactly as supplied (three flow-rate folders)\\
+\path{data/fluent_screenshots/} & Contour and pathline images from Fluent\\
+\path{data/tables/*.csv} & Processed tables (station comparison, pressure summary, uniformity, velocity, scaling, \ldots)\\
+\path{data/oxygen_numbers.json} & Every oxygen number quoted in \cref{ch:o2analytical,ch:o2results}\\
+\path{scripts/postprocessing/analysis.py} & Reads the raw exports, computes all flow comparisons, writes \path{build/postprocessing/}\\
+\path{scripts/postprocessing/make_figures.py} & Flow figures (\texttt{Fig01}--\texttt{Fig41})\\
+\path{scripts/postprocessing/theory.py}, \path{hele_shaw_theory.py} & T1/T2 formulas, rectangular-duct series, side-wall layer\\
+\path{scripts/postprocessing/hele_shaw_2d.py} & T3 finite-element solver of \cref{eq:th_T3}\\
+\path{scripts/oxygen/design_model.py} & 1.5-D oxygen model (cup-mixing ODE with exact closure)\\
+\path{scripts/oxygen/make_report_figures.py} & Geometry figure, published-comparison figure, oxygen figures and \path{oxygen_numbers.json}\\
+\bottomrule
+\end{tabularx}
+\end{small}
+
+\paragraph{Software.} Python 3 with \texttt{numpy}, \texttt{scipy}, \texttt{pandas} and \texttt{matplotlib}; ANSYS Fluent 2024 R1 for the CFD; pdf\LaTeX{} with BibTeX for the report.
+
+\paragraph{Order of execution.}
+\begin{enumerate}
+\item \path{python scripts/postprocessing/analysis.py}
+\item \path{python scripts/postprocessing/make_figures.py}
+\item \path{python scripts/oxygen/make_report_figures.py}
+\item \texttt{latexmk -pdf main.tex}
+\end{enumerate}
+The flow figures used in the report were copied from the post-processing output into \path{figures/}.

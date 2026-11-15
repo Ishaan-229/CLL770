@@ -1,0 +1,43 @@
+\chapter{Integrated Discussion}
+\label{ch:discussion}
+
+\section{From geometry to oxygen: how the parts connect}
+
+The project followed one chain of reasoning. The hyperbolic width was chosen so that $1/w(x)$ is linear in $x$. Lubrication theory turns this into a linear pressure gradient and a linear wall shear (\cref{ch:theory}). The CFD confirmed that this design principle holds where the theory's assumptions hold. It also showed precisely where they do not: near the narrow inlet (side-wall drag) and at the outlet corner (two-dimensional flow). Having established that the flow is a Stokes flow whose shape is known to within \SI{1}{\percent}, we could use the same lubrication flow as the transport field for oxygen. The oxygen analysis then showed that the defining feature of the design, the widening that spreads a fixed flow over a growing area, controls the oxygen supply as strongly as it controls the shear.
+
+\section{What was reproduced}
+
+\begin{itemize}
+\item The shear range of the reference paper at both flow rates (within a few percent at the inlet), the raised shear minimum near the outlet, and the imaging zones at S3--S4 (within \SI{2}{\percent}).
+\item The linear decrease of shear along the axis, accurate to about $\pm\SI{4}{\percent}$ for $x\lesssim\SI{40}{mm}$.
+\item The independence of the uniform-shear zone from the flow rate. In the present results this follows from exact Stokes scaling (\SI{0.08}{\percent} over a 545-fold range of $Q$).
+\end{itemize}
+Not reproduced, or not reproducible from the information available: the published $D_{\max}$ at S5, the published mesh sensitivity of \SI{1.4}{\percent}, and the velocity and strain-rate profiles across the gap.
+
+\section{How accurate is the theory?}
+
+Eq.~2 of the reference paper is a good design formula over most of the channel, but for a reason the paper does not discuss. Its error is systematic. It under-predicts the shear by up to \SI{10}{\percent} near the inlet, because it neglects side-wall drag, and it fails completely at S5, because the outlet corner makes the flow two-dimensional. The present CFD reproduces both effects exactly in shape, but carries a \SI{-5}{\percent} offset, so its \emph{apparent} agreement with Eq.~2 ($\pm\SI{3.3}{\percent}$ at S1--S4) is partly a cancellation. This illustrates a general caution: a close match between CFD and a simple formula is not by itself evidence that either is correct. The structure of the residual had to be examined against a hierarchy of theories (T1--T3) to find this out.
+
+T2 and T3 together explain every systematic feature of the CFD, apart from the uniform offset: the slope of the deviation with $h/w$, the position of the shear minimum, the \SI{46}{\percent} excess at S5, the side-wall layer and the dome-shaped profile at S5.
+
+\section{Physical phenomena identified}
+
+\begin{enumerate}
+\item \textbf{Stokes linearity.} All fields are proportional to $Q$; inertia appears only as a \SI{0.7}{\percent} effect at the inlet face at \SI{120}{\uLmin}.
+\item \textbf{Side-wall drag.} The side walls raise the axial shear by $\approx0.63\,h/w$ and create a non-uniform layer about $0.9h$ thick that does not change along the channel. This is why the uniform fraction of the width grows downstream.
+\item \textbf{Two-dimensional redistribution at the outlet corner.} Within about \SI{3}{mm} of $x_t$ the flow turns towards the outlet. The shear on the axis rises by \SI{46}{\percent} relative to Eq.~2 and the corners stagnate.
+\item \textbf{Numerical under-resolution across the gap.} The peak velocity exceeds the parabola implied by the computed pressure gradient. This is a measurable signature of too few cells across the gap, which can be tested.
+\end{enumerate}
+
+\section{What oxygen modelling adds}
+
+The flow analysis answers the question ``what shear do the cells feel?'' The oxygen analysis answers ``is shear the only thing that differs between the cells?'' For an impermeable device at the culture flow rates, the answer is no. The low-shear region is also the oxygen-starved region, so a biological gradient along the channel could not be attributed to shear alone. For the actual PDMS device, the model indicates that oxygen is uniform at about \SI{95}{\percent} of saturation. If confirmed, this validates the device for shear studies in a way the flow analysis alone could not. Three further results came only from the transport analysis:
+\begin{itemize}
+\item the controlling group $\Da_{\mathrm{conv}}$ and the threshold $Q_{\min}=\qmax A_{\mathrm{cells}}/\Csat$;
+\item the independence of the anoxia position from $h$ and $D$ with impermeable walls;
+\item the $Q$-independent PDMS equilibrium $1-1/\Phi_{\mathrm{PDMS}}-\Da_w$.
+\end{itemize}
+
+\section{Limitations of the current approach}
+
+The flow validation rests on one mesh and on exports that lack the gap coordinate. The oxygen analysis rests on illustrative uptake parameters and on a reduced-order model that cannot resolve the side-wall layers or the corner. Both limitations are discussed in \cref{ch:limitations}, and the information missing for each is listed in \cref{app:missing}.

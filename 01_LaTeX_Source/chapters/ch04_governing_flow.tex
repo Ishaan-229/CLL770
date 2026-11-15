@@ -1,0 +1,100 @@
+\chapter{Mathematical Formulation: Fluid Flow}
+\label{ch:governing}
+
+\section{Conservation of mass}
+
+For a fluid of density $\rho$ and velocity $\vect u$, conservation of mass in a fixed control volume gives the continuity equation
+\begin{equation}
+\frac{\partial\rho}{\partial t}+\nabla\cdot(\rho\vect u)=0 .
+\label{eq:gov_cont_general}
+\end{equation}
+The first term is the rate at which mass accumulates in a unit volume; the second is the net mass outflow per unit volume. The culture medium is a liquid. Pressure differences in the chip are below \SI{250}{Pa} and temperature is held at \SI{37}{\celsius}, so its density changes by a negligible fraction and $\rho$ is constant. \Cref{eq:gov_cont_general} then reduces to the incompressibility condition
+\begin{equation}
+\nabla\cdot\vect u=\frac{\partial u_x}{\partial x}+\frac{\partial u_y}{\partial y}+\frac{\partial u_z}{\partial z}=0 .
+\label{eq:gov_cont}
+\end{equation}
+Physically, \cref{eq:gov_cont} says that the volumetric flow rate $Q$ through every cross-section of the channel is the same. This is what links the local velocity, and hence the shear, to the local width: as $w(x)$ grows, the same $Q$ is spread over a larger cross-section and the fluid slows down.
+
+\section{Conservation of momentum}
+
+Newton's second law for a fluid element of a Newtonian fluid with constant density and viscosity gives the Navier--Stokes equations \citep{BSL2002,Batchelor1967}:
+\begin{equation}
+\underbrace{\rho\left(\frac{\partial\vect u}{\partial t}+\vect u\cdot\nabla\vect u\right)}_{\text{inertia}}
+=\underbrace{-\nabla p}_{\text{pressure force}}
++\underbrace{\mu\nabla^2\vect u}_{\text{viscous force}}
++\underbrace{\rho\vect g}_{\text{body force}} .
+\label{eq:gov_ns}
+\end{equation}
+The left-hand side is the mass times the acceleration of a fluid element. It contains the local acceleration $\partial\vect u/\partial t$ and the convective acceleration $\vect u\cdot\nabla\vect u$, which appears when a fluid element moves into a region of different velocity, as it does here because the channel widens. On the right-hand side, $-\nabla p$ is the net pressure force per unit volume, $\mu\nabla^2\vect u$ is the net viscous force (the divergence of the Newtonian stress tensor $\mu[\nabla\vect u+(\nabla\vect u)^{\mathsf T}]$ when $\nabla\cdot\vect u=0$), and $\rho\vect g$ is gravity. The wall shear stress, the central quantity of this project, is the tangential viscous stress on the floor:
+\begin{equation}
+\taw=\mu\left.\frac{\partial u_x}{\partial z}\right|_{z=0}
+\label{eq:gov_tauw}
+\end{equation}
+(strictly the magnitude of $\mu\,\partial\vect u_{\parallel}/\partial z$; on the axis only the $x$-component is non-zero).
+
+For constant density, gravity can be absorbed into a modified pressure $P=p-\rho\vect g\cdot\vect r$. It then disappears from \cref{eq:gov_ns} and from the boundary conditions, because the chip has no free surface. The hydrostatic difference across the gap, $\rho gh\approx\SI{1.4}{Pa}$, is comparable to the axial pressure drop, but it does not drive any flow. The Fluent model has gravity switched off, so its pressure is the modified pressure $P$ (written $p$ from here on).
+
+\section{Model assumptions and their verification}
+
+\Cref{tab:assumptions} lists each assumption, the evidence for it in this project and its consequence. All of them hold for the simulations. Only one, the neglect of side walls, fails in the simplest analytical model (T1), and it is removed in T2 and T3 (\cref{ch:theory}).
+
+\begin{table}[htbp]
+\centering
+\caption{Assumptions of the flow model, checked against the present set-up.}
+\label{tab:assumptions}
+\small
+\begin{tabularx}{\linewidth}{@{}p{0.2\linewidth}X p{0.17\linewidth}@{}}
+\toprule
+Assumption & Evidence in this project & Status\\
+\midrule
+Steady flow & Constant mass-flow inlet; viscous diffusion time across the gap $h^2/\nu=\SI{0.022}{s}$ is tiny compared with any change in the boundary conditions & valid (simulations steady)\\
+Incompressible, constant $\rho$ & Liquid; $\Delta p<\SI{250}{Pa}$; isothermal at \SI{37}{\celsius} & valid\\
+Newtonian, constant $\mu$ & Wall shear rates $\taw/\mu\approx\SIrange{0.15}{600}{s^{-1}}$; medium with \SI{10}{\percent} serum treated as Newtonian with $\mu=\SI{0.94}{mPa.s}$ \tagP & assumed (not measured)\\
+Laminar & $\Rey_{D_h}\le3.65$ (\cref{tab:dimensionless}) & valid\\
+Gravity negligible & Absorbed in the modified pressure; no free surface & valid\\
+No slip at walls & Liquid; molecular length scale $\sim\SI{0.3}{nm}$ gives $Kn\sim10^{-6}$ & valid\\
+Continuum & As above & valid\\
+Locally fully developed & Development length $(0.6+0.05\Rey_h)h\approx\SI{0.09}{mm}\ll\SI{2}{mm}$ lead-in; wall half-angle $\le\ang{6.3}$ up to S4 & valid for $x\lesssim\SI{40}{mm}$, not at S5\\
+Side walls negligible & $h/w=0.13$ at S1 & \textbf{not valid} for T1; corrected in T2/T3\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\section{Dimensionless numbers}
+\label{sec:dimensionless}
+
+\paragraph{Reynolds number.} The ratio of inertial to viscous forces, based on the hydraulic diameter at the inlet of the hyperbolic section ($D_h=\SI{0.253}{mm}$, $\bar U=Q/(w_1h)$), is
+\begin{equation}
+\Rey_{D_h}=\frac{\rho\bar UD_h}{\mu}=0.0067,\ 0.030\ \text{and}\ 3.65
+\end{equation}
+for 0.22, 1 and \SI{120}{\uLmin}. These values are far below the laminar--turbulent transition ($\sim2000$). In a thin gap the relevant comparison is the convective acceleration $\rho u_x\,\partial u_x/\partial x\sim\rho\bar U^2/\ell$, where $\ell=L-x$ is the length over which the width changes, against the viscous term $\mu\bar U/h^2$. Their ratio $\Rey_h\,h/\ell$ is the reduced Reynolds number of lubrication theory. Since $\ell\ge w$ for $x\lesssim\SI{43}{mm}$, it is bounded by the conservative estimate
+\begin{equation}
+\Rey^*=\frac{\rho\bar Uh}{\mu}\,\frac{h}{w}=\num{5.6e-4},\ \num{2.5e-3}\ \text{and}\ 0.30 ,
+\label{eq:gov_restar}
+\end{equation}
+which is small at all three flow rates. Inertia is therefore negligible and the flow is a Stokes flow: velocity, pressure and shear must all scale exactly with $Q$. This is tested in \cref{sec:val_scaling}.
+
+\paragraph{Aspect ratio.} The aspect ratio $h/w$ (\cref{tab:stations}) measures the share of the drag carried by the side walls. For $h/w\to0$ the flow is that between infinite plates. At $h/w=0.13$, the side walls carry enough drag to raise the floor shear on the axis by \SI{9}{\percent} (\cref{sec:th_sidewall}).
+
+\paragraph{Hydraulic diameter.} $D_h=2wh/(w+h)$ ranges from \SI{253}{\micro\metre} to \SI{286}{\micro\metre} and approaches $2h$ as $w\gg h$. It is used only to quote a conventional Reynolds number. The physics of the thin gap is governed by $h$, not $D_h$.
+
+\paragraph{P\'eclet and Damk\"ohler numbers.} These are relevant to oxygen transport and are introduced in \cref{ch:o2equations}.
+
+\begin{table}[htbp]
+\centering
+\caption{Dimensionless numbers of the flow at the inlet of the hyperbolic section ($x=0$, $w=w_1$), where they are largest.}
+\label{tab:dimensionless}
+\small
+\begin{tabular}{@{}lccc@{}}
+\toprule
+Quantity & \SI{0.22}{\uLmin} & \SI{1}{\uLmin} & \SI{120}{\uLmin}\\
+\midrule
+Mean velocity $\bar U$ [\si{mm/s}] & 0.0253 & 0.115 & 13.8\\
+$\Rey_{D_h}=\rho\bar UD_h/\mu$ & 0.0067 & 0.030 & 3.65\\
+$\Rey_h=\rho\bar Uh/\mu$ & 0.0038 & 0.017 & 2.09\\
+$\Rey^*=\Rey_h\,h/w$ & \num{5.6e-4} & \num{2.5e-3} & 0.30\\
+Development length $(0.6+0.05\Rey_h)h$ [mm] & 0.087 & 0.087 & 0.102\\
+Viscous time $h^2/\nu$ [s] & 0.022 & 0.022 & 0.022\\
+\bottomrule
+\end{tabular}
+\end{table}
