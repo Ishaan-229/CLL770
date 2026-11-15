@@ -1,0 +1,330 @@
+[
+ {
+  "number": 1,
+  "folder": "Pressure",
+  "file": "Fig01_pressure_contours_all_Q",
+  "title": "Static pressure contours for the three flow rates",
+  "caption": "Fluent contour images supplied with the results (plan view, raster). Colour-bar maxima 0.395, 1.80 and 215.6 Pa scale with Q to within 0.3 % (1.795-1.800 Pa per \u00b5L/min); the maxima are ~8 % above the centre-line value at x = 0 because the domain includes the 2 mm straight lead-in upstream of x = 0.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig01_pressure_contours_all_Q.png"
+ },
+ {
+  "number": 2,
+  "folder": "Pressure",
+  "file": "Fig02_pressure_vs_x_Q0p22",
+  "title": "Static pressure along the centre-line, Q = 0.22 \u00b5L/min",
+  "caption": "CFD pressure (gauge, outlet = 0 Pa) against the 2D Hele-Shaw model T3 (absolute, includes the lead-in and the outlet transition) and the analytical T1 profile anchored at the CFD value at x = 0. The CFD curve decreases monotonically; the T1 curve applies only to 0-45 mm.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig02_pressure_vs_x_Q0p22.png"
+ },
+ {
+  "number": 3,
+  "folder": "Pressure",
+  "file": "Fig03_pressure_vs_x_Q1",
+  "title": "Static pressure along the centre-line, Q = 1 \u00b5L/min",
+  "caption": "CFD pressure (gauge, outlet = 0 Pa) against the 2D Hele-Shaw model T3 (absolute, includes the lead-in and the outlet transition) and the analytical T1 profile anchored at the CFD value at x = 0. The CFD curve decreases monotonically; the T1 curve applies only to 0-45 mm.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig03_pressure_vs_x_Q1.png"
+ },
+ {
+  "number": 4,
+  "folder": "Pressure",
+  "file": "Fig04_pressure_vs_x_Q120",
+  "title": "Static pressure along the centre-line, Q = 120 \u00b5L/min",
+  "caption": "CFD pressure (gauge, outlet = 0 Pa) against the 2D Hele-Shaw model T3 (absolute, includes the lead-in and the outlet transition) and the analytical T1 profile anchored at the CFD value at x = 0. The CFD curve decreases monotonically; the T1 curve applies only to 0-45 mm.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig04_pressure_vs_x_Q120.png"
+ },
+ {
+  "number": 5,
+  "folder": "Pressure",
+  "file": "Fig05_pressure_vs_x_combined_normalised",
+  "title": "Centre-line pressure of all flow rates, normalised by Q",
+  "caption": "Pressure divided by the volumetric flow rate. The three CFD curves collapse onto one line (largest difference 0.02 %), showing Stokes-flow linearity across a 545-fold range of Q. T3 lies ~5 % above the CFD along the whole channel.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig05_pressure_vs_x_combined_normalised.png"
+ },
+ {
+  "number": 6,
+  "folder": "Pressure",
+  "file": "Fig06_pressure_drop_vs_Q",
+  "title": "Pressure drop across the channel versus flow rate",
+  "caption": "Centre-line pressure drop from x = 0 to the outlet (CFD) on logarithmic axes. \u0394p = 1.657 Q (Q in \u00b5L/min) to within 0.02 %; hydraulic resistance 9.94e10 Pa s m^-3. The T1 points cover only the hyperbolic section and are therefore lower by construction.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig06_pressure_drop_vs_Q.png"
+ },
+ {
+  "number": 7,
+  "folder": "Pressure",
+  "file": "Fig07_pressure_gradient_vs_x",
+  "title": "Local axial pressure gradient along the channel",
+  "caption": "Magnitude of dp/dx per unit flow rate from a \u00b10.4 mm least-squares window on the CFD centre-line pressure. The gradient falls linearly with x in the hyperbolic section, reaches a minimum at x \u2248 44 mm and rises again where the 45\u00b0 walls converge to the 1.5 mm outlet.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig07_pressure_gradient_vs_x.png"
+ },
+ {
+  "number": 8,
+  "folder": "Theoretical_Comparisons",
+  "file": "Fig08_pressure_drop_CFD_vs_theory",
+  "title": "Cumulative pressure drop: CFD versus Hele-Shaw theory",
+  "caption": "Top: pressure drop from x = 0 for Q = 1 \u00b5L/min. Bottom: signed deviation of the CFD from T1 for all flow rates (curves coincide) and from T2. Over 0-45 mm the CFD is 1.4 % above T1 and 4.9 % below T2.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig08_pressure_drop_CFD_vs_theory.png"
+ },
+ {
+  "number": 9,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig09_wall_shear_contours_all_Q",
+  "title": "Wall shear stress contours for the three flow rates",
+  "caption": "Fluent contour images supplied with the results (raster). The colour-bar maxima (3.32e-3, 1.51e-2 and 1.825 Pa) occur at the inlet face of the lead-in, where the uniform mass-flow inlet profile creates a local shear peak; they scale with Q to within 0.7 %. The colour scale is dominated by that peak, so the gradient along the cell wall is quantified in the line plots that follow.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig09_wall_shear_contours_all_Q.png"
+ },
+ {
+  "number": 10,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig10_wall_shear_vs_x_Q0p22",
+  "title": "Centre-line wall shear stress, Q = 0.22 \u00b5L/min",
+  "caption": "CFD wall shear along the y = 0 line on the channel wall compared with Eq. 2 (T1), the rectangular-section correction (T2) and the 2D Hele-Shaw model (T3, includes the outlet transition). The CFD decreases almost linearly to a minimum at x \u2248 44 mm and rises again in the converging outlet.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig10_wall_shear_vs_x_Q0p22.png"
+ },
+ {
+  "number": 11,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig11_wall_shear_vs_x_Q1",
+  "title": "Centre-line wall shear stress, Q = 1 \u00b5L/min",
+  "caption": "CFD wall shear along the y = 0 line on the channel wall compared with Eq. 2 (T1), the rectangular-section correction (T2) and the 2D Hele-Shaw model (T3, includes the outlet transition). The CFD decreases almost linearly to a minimum at x \u2248 44 mm and rises again in the converging outlet.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig11_wall_shear_vs_x_Q1.png"
+ },
+ {
+  "number": 12,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig12_wall_shear_vs_x_Q120",
+  "title": "Centre-line wall shear stress, Q = 120 \u00b5L/min",
+  "caption": "CFD wall shear along the y = 0 line on the channel wall compared with Eq. 2 (T1), the rectangular-section correction (T2) and the 2D Hele-Shaw model (T3, includes the outlet transition). The CFD decreases almost linearly to a minimum at x \u2248 44 mm and rises again in the converging outlet.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig12_wall_shear_vs_x_Q120.png"
+ },
+ {
+  "number": 13,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig13_wall_shear_vs_x_combined",
+  "title": "Centre-line wall shear stress for all flow rates",
+  "caption": "Absolute wall shear on a logarithmic axis. The three cases are parallel (identical shape) and separated by the flow-rate ratios 4.55 and 120; the dashed lines are Eq. 2 for each case.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig13_wall_shear_vs_x_combined.png"
+ },
+ {
+  "number": 14,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig14_wall_shear_normalised",
+  "title": "Normalised wall shear stress versus normalised axial distance",
+  "caption": "Wall shear divided by the Eq. 2 inlet value \u03c4\u2081 = 6\u03bcQ/(h\u00b2w\u2081) (9.84e-4, 4.47e-3 and 0.537 Pa). All flow rates collapse onto one curve (differences < 0.05 %). The CFD crosses the T1 line near x/L = 0.5 and lies parallel to, but ~5 % below, T2.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig14_wall_shear_normalised.png"
+ },
+ {
+  "number": 15,
+  "folder": "Wall_Shear_Stress",
+  "file": "Fig15_wall_shear_percentage_deviation",
+  "title": "Percentage deviation of the CFD wall shear stress from theory",
+  "caption": "Signed deviation along the hyperbolic section. Against Eq. 2 the deviation runs from +3.5 % at the inlet through zero (x \u2248 25 mm) to -2 % at S4, then rises steeply to +46 % at S5 (outlet corner). Against T2 it is a near-constant -5.2 \u00b1 0.4 %; against T3 it stays at -5 % including at S5.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig15_wall_shear_percentage_deviation.png"
+ },
+ {
+  "number": 16,
+  "folder": "Theoretical_Comparisons",
+  "file": "Fig16_shear_deviation_vs_aspect_ratio",
+  "title": "Deviation from Eq. 2 as a function of the local aspect ratio",
+  "caption": "Points: CFD centre-line shear between x = 2 and 40 mm. The CFD reproduces the slope of the exact side-wall correction (T2) but sits on a parallel line shifted by -4.9 %; the slope difference is only -0.026 per unit h/w.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig16_shear_deviation_vs_aspect_ratio.png"
+ },
+ {
+  "number": 17,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig17_transverse_shear_S1",
+  "title": "Transverse wall shear stress profile at S1 (x = 5 mm)",
+  "caption": "Top/bottom-wall nodes on the plane x = 5 mm (each point is the mean of the two nearly coincident top and bottom wall nodes), divided by Q. Vertical lines: side walls at \u00b10.556 mm. The three flow rates overlap exactly (markers hidden behind each other); the central plateau is flat to within 0.8 % and the shear drops to ~0.44 of the axis value at the corner nodes.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig17_transverse_shear_S1.png"
+ },
+ {
+  "number": 18,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig18_transverse_shear_S2",
+  "title": "Transverse wall shear stress profile at S2 (x = 15 mm)",
+  "caption": "Top/bottom-wall nodes on the plane x = 15 mm (each point is the mean of the two nearly coincident top and bottom wall nodes), divided by Q. Vertical lines: side walls at \u00b10.714 mm. The three flow rates overlap exactly (markers hidden behind each other); the central plateau is flat to within 0.8 % and the shear drops to ~0.44 of the axis value at the corner nodes.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig18_transverse_shear_S2.png"
+ },
+ {
+  "number": 19,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig19_transverse_shear_S3",
+  "title": "Transverse wall shear stress profile at S3 (x = 25 mm)",
+  "caption": "Top/bottom-wall nodes on the plane x = 25 mm (each point is the mean of the two nearly coincident top and bottom wall nodes), divided by Q. Vertical lines: side walls at \u00b11.000 mm. The three flow rates overlap exactly (markers hidden behind each other); the central plateau is flat to within 0.8 % and the shear drops to ~0.44 of the axis value at the corner nodes.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig19_transverse_shear_S3.png"
+ },
+ {
+  "number": 20,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig20_transverse_shear_S4",
+  "title": "Transverse wall shear stress profile at S4 (x = 35 mm)",
+  "caption": "Top/bottom-wall nodes on the plane x = 35 mm (each point is the mean of the two nearly coincident top and bottom wall nodes), divided by Q. Vertical lines: side walls at \u00b11.667 mm. The three flow rates overlap exactly (markers hidden behind each other); the central plateau is flat to within 0.8 % and the shear drops to ~0.44 of the axis value at the corner nodes.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig20_transverse_shear_S4.png"
+ },
+ {
+  "number": 21,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig21_transverse_shear_S5",
+  "title": "Transverse wall shear stress profile at S5 (x = 45 mm)",
+  "caption": "Top/bottom-wall nodes on the plane x = 45 mm (each point is the mean of the two nearly coincident top and bottom wall nodes), divided by Q. Vertical lines: side walls at \u00b15.000 mm. S5 lies at the widest point, where the walls turn from diverging to converging (45\u00b0): there is no plateau; the shear is highest on the axis and decreases continuously to ~0 at the corners, with the shape predicted by T3.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig21_transverse_shear_S5.png"
+ },
+ {
+  "number": 22,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig22_transverse_shear_all_sections",
+  "title": "Transverse wall shear profiles at the five sections (Q = 1 \u00b5L/min)",
+  "caption": "Each panel has its own y range (the channel is 1.1 mm wide at S1 and 10 mm at S5). At S1-S4 the profile is a flat plateau with a side-wall layer of ~0.15 mm; at S5 the profile is non-uniform over the full width.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig22_transverse_shear_all_sections.png"
+ },
+ {
+  "number": 23,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig23_transverse_shear_evolution",
+  "title": "Evolution of the transverse wall shear profile from S1 to S5 (Q = 1 \u00b5L/min)",
+  "caption": "As the channel widens the axis shear falls (4.15 \u2192 0.66 mPa) and the \u00b15 % plateau widens from 0.78 mm (S1) to 3.04 mm (S4); the side-wall layer keeps a constant absolute thickness. At S5 the outlet corner reshapes the whole profile into a dome (\u00b15 % band only 2.05 mm wide).",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig23_transverse_shear_evolution.png"
+ },
+ {
+  "number": 24,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig24_transverse_shear_normalised",
+  "title": "Normalised transverse wall shear profiles \u03c4(y)/\u03c4(0)",
+  "caption": "Profiles normalised by the axis value and by the local half-width. At S1-S4 the layer of reduced shear has a fixed thickness of ~h, so its share of the width shrinks downstream. At S5 the shear falls monotonically from the axis to the corners.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig24_transverse_shear_normalised.png"
+ },
+ {
+  "number": 25,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig25_sidewall_layer_collapse",
+  "title": "Side-wall layer: wall shear versus distance from the side wall (S1-S4)",
+  "caption": "When plotted against the distance from the side wall the profiles from S1-S4 collapse, confirming that the layer thickness scales with h, not with w. The theoretical 5 % point is 0.129 mm from the wall; CFD wall nodes are 0.08-0.10 mm apart near the side walls.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig25_sidewall_layer_collapse.png"
+ },
+ {
+  "number": 26,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig26_uniform_zone_width_vs_x",
+  "title": "Width of the uniform-shear zone and its sensitivity to the tolerance",
+  "caption": "2d = width of the central band in which |\u03c4(y)/\u03c4(0) - 1| \u2264 \u03b5, for \u03b5 = 2, 5 and 10 %, at Q = 1 \u00b5L/min (other flow rates differ by < 0.002 mm). Theory: T2 at S1-S4, T3 at S5. The uniform zone widens from S1 to S4 and collapses at S5.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig26_uniform_zone_width_vs_x.png"
+ },
+ {
+  "number": 27,
+  "folder": "Transverse_Shear_S1_S5",
+  "file": "Fig27_uniform_fraction_bar",
+  "title": "Fraction of the channel width with uniform shear",
+  "caption": "Percentage of the local width within the tolerance band (Q = 1 \u00b5L/min). At \u00b15 % the fraction grows from 70 % (S1) to 91 % (S4) and drops to 20 % at S5.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig27_uniform_fraction_bar.png"
+ },
+ {
+  "number": 28,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig28_transverse_velocity_S1",
+  "title": "Velocity magnitude across the width at S1 (x = 5 mm)",
+  "caption": "Grey: every exported node of the plane x = 5 mm (nodes at all heights z, so the scatter spans 0 to the mid-plane value). Lines: upper envelope (nodes that are the local maximum within \u00b10.015 mm), which approximates the velocity near mid-height. The exported quantity is the velocity magnitude, not the axial component; the export has no z coordinate, so u(z) cannot be reconstructed.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig28_transverse_velocity_S1.png"
+ },
+ {
+  "number": 29,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig29_transverse_velocity_S2",
+  "title": "Velocity magnitude across the width at S2 (x = 15 mm)",
+  "caption": "Grey: every exported node of the plane x = 15 mm (nodes at all heights z, so the scatter spans 0 to the mid-plane value). Lines: upper envelope (nodes that are the local maximum within \u00b10.015 mm), which approximates the velocity near mid-height. The exported quantity is the velocity magnitude, not the axial component; the export has no z coordinate, so u(z) cannot be reconstructed.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig29_transverse_velocity_S2.png"
+ },
+ {
+  "number": 30,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig30_transverse_velocity_S3",
+  "title": "Velocity magnitude across the width at S3 (x = 25 mm)",
+  "caption": "Grey: every exported node of the plane x = 25 mm (nodes at all heights z, so the scatter spans 0 to the mid-plane value). Lines: upper envelope (nodes that are the local maximum within \u00b10.015 mm), which approximates the velocity near mid-height. The exported quantity is the velocity magnitude, not the axial component; the export has no z coordinate, so u(z) cannot be reconstructed.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig30_transverse_velocity_S3.png"
+ },
+ {
+  "number": 31,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig31_transverse_velocity_S4",
+  "title": "Velocity magnitude across the width at S4 (x = 35 mm)",
+  "caption": "Grey: every exported node of the plane x = 35 mm (nodes at all heights z, so the scatter spans 0 to the mid-plane value). Lines: upper envelope (nodes that are the local maximum within \u00b10.015 mm), which approximates the velocity near mid-height. The exported quantity is the velocity magnitude, not the axial component; the export has no z coordinate, so u(z) cannot be reconstructed.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig31_transverse_velocity_S4.png"
+ },
+ {
+  "number": 32,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig32_transverse_velocity_S5",
+  "title": "Velocity magnitude across the width at S5 (x = 45 mm)",
+  "caption": "Grey: every exported node of the plane x = 45 mm (nodes at all heights z, so the scatter spans 0 to the mid-plane value). Lines: upper envelope (nodes that are the local maximum within \u00b10.015 mm), which approximates the velocity near mid-height. The exported quantity is the velocity magnitude, not the axial component; the export has no z coordinate, so u(z) cannot be reconstructed.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig32_transverse_velocity_S5.png"
+ },
+ {
+  "number": 33,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig33_transverse_velocity_all_sections",
+  "title": "Velocity magnitude across the width at the five sections (Q = 1 \u00b5L/min)",
+  "caption": "Peak velocity falls from 0.166 mm/s at S1 to 0.026 mm/s at S5 as the cross-section widens. Grey points are nodes at all depths; they fall on four discrete levels plus the walls, reflecting the mesh layers across the gap. Isolated dips in the envelope (S2, S4) are mesh columns that have no node near mid-height, not flow features.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig33_transverse_velocity_all_sections.png"
+ },
+ {
+  "number": 34,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig34_transverse_velocity_normalised",
+  "title": "Normalised transverse velocity profiles",
+  "caption": "Envelope velocity divided by its axis value. S1-S4 show a flat core and a side-wall layer of fixed thickness; at S5 the profile is non-uniform across the width because the flow converges towards the outlet.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig34_transverse_velocity_normalised.png"
+ },
+ {
+  "number": 35,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig35_peak_velocity_vs_x",
+  "title": "Peak velocity along the channel",
+  "caption": "Highest sampled velocity magnitude at each section divided by Q (markers) against the theoretical mid-plane maximum. The CFD maxima are 1.2-3.4 % below theory but 1.6-3.9 % above the parabola implied by the CFD's own pressure gradient.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig35_peak_velocity_vs_x.png"
+ },
+ {
+  "number": 36,
+  "folder": "Transverse_Velocity_S1_S5",
+  "file": "Fig36_pathlines_Q1_Q120",
+  "title": "Pathlines coloured by velocity magnitude",
+  "caption": "Fluent report images found in the results archive (raster). Maximum velocity 1.94e-4 m/s at 1 \u00b5L/min and 2.31e-2 m/s at 120 \u00b5L/min (ratio 119.1 vs 120: -0.8 %). Pathlines follow the diverging walls without separation and converge smoothly into the outlet.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig36_pathlines_Q1_Q120.png"
+ },
+ {
+  "number": 37,
+  "folder": "Combined_Comparisons",
+  "file": "Fig37_validation_ratios_by_station",
+  "title": "Agreement between CFD and theory at the five sections (Q = 1 \u00b5L/min)",
+  "caption": "Deviation of the CFD pressure gradient, wall shear and peak velocity from the best applicable theory (T2 at S1-S4, T3 at S5); crosses: Eq. 2. Pressure gradient and shear are uniformly ~5 % low (grey band = mean \u00b1 s.d. over 2-40 mm); the peak velocity is within 3.5 %. The S5 point vs Eq. 2 (+46 %) is off-scale.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig37_validation_ratios_by_station.png"
+ },
+ {
+  "number": 38,
+  "folder": "Combined_Comparisons",
+  "file": "Fig38_pressure_gradient_vs_shear",
+  "title": "Momentum balance: wall shear versus pressure gradient (Q = 1 \u00b5L/min)",
+  "caption": "For a wide gap, \u03c4_w = (h/2)|dp/dx| on the axis. The CFD shear and the shear implied by the CFD pressure gradient agree to within 0.8 % at all stations (labels: ratio), i.e. the two exported fields are mutually consistent with h = 145 \u00b5m.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig38_pressure_gradient_vs_shear.png"
+ },
+ {
+  "number": 39,
+  "folder": "Combined_Comparisons",
+  "file": "Fig39_velocity_vs_shear_profiles",
+  "title": "Transverse velocity and wall shear profiles compared",
+  "caption": "Normalised envelope velocity and wall shear at each section (Q = 1 \u00b5L/min). Both follow the same shape because \u03c4_w = 4\u03bcu_mid/h holds locally across the core; near the side walls the shear drops slightly earlier than the velocity.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig39_velocity_vs_shear_profiles.png"
+ },
+ {
+  "number": 40,
+  "folder": "Combined_Comparisons",
+  "file": "Fig40_flow_rate_scaling",
+  "title": "Linearity of the response with flow rate",
+  "caption": "Percentage departure of each quantity from exact proportionality with Q, relative to the 1 \u00b5L/min case. All interior quantities are proportional to within 0.08 %; the only measurable non-linearity is the +0.7 % inlet-face shear peak at 120 \u00b5L/min (Re = 3.6). The 0.22 \u00b5L/min bars are below 0.001 % except the contour maximum, whose -0.08 % reflects the 3-figure colour-bar label.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig40_flow_rate_scaling.png"
+ },
+ {
+  "number": 41,
+  "folder": "Combined_Comparisons",
+  "file": "Fig41_regional_deviation",
+  "title": "Inlet, central and outlet regions: deviation of the centre-line shear",
+  "caption": "Mean signed deviation of the CFD wall shear in four regions (Q = 1 \u00b5L/min). Eq. 2 is accurate in the central region but fails in the outlet transition; the 2D model T3 removes the regional dependence and leaves a uniform -5 % offset.",
+  "report_png": "/home/claude/HS_PostProc/output/report_figs/Fig41_regional_deviation.png"
+ }
+]
