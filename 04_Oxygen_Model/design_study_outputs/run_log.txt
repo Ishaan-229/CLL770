@@ -1,0 +1,32 @@
+Dimensionless groups at the inlet (baseline, impermeable):
+  Q=  0.22 uL/min  Pe_h=1.22  Pe_L=421  Da_w=0.0109  Da_conv=7.06  Bi_pdms=0  Phi_pdms=0  C_over_Km=283  L_entry_mm=0.00815  t_res_s=4.55e+03  t_diff_h_s=7.01
+  Q=  1.00 uL/min  Pe_h=5.56  Pe_L=1.92e+03  Da_w=0.0109  Da_conv=1.55  Bi_pdms=0  Phi_pdms=0  C_over_Km=283  L_entry_mm=0.0371  t_res_s=1e+03  t_diff_h_s=7.01
+  Q=120.00 uL/min  Pe_h=667  Pe_L=2.3e+05  Da_w=0.0109  Da_conv=0.0129  Bi_pdms=0  Phi_pdms=0  C_over_Km=283  L_entry_mm=4.45  t_res_s=8.35  t_diff_h_s=7.01
+ Q_ulmin        wall  tau_a_dyn  tau_b_dyn  minCbot_over_Csat  hypoxic_area_frac  Da_conv  Phi_pdms
+    0.22 impermeable     0.0096     0.0020             0.0000             0.8734   7.0559    0.0000
+    0.22   PDMS 5 mm     0.0096     0.0020             0.9496             0.0000   7.0559   25.1425
+    1.00 impermeable     0.0438     0.0091             0.0000             0.1766   1.5523    0.0000
+    1.00   PDMS 5 mm     0.0438     0.0091             0.9496             0.0000   1.5523   25.1425
+  120.00 impermeable     5.2613     1.0930             0.9870             0.0000   0.0129    0.0000
+  120.00   PDMS 5 mm     5.2613     1.0930             0.9874             0.0000   0.0129   25.1425
+
+Pareto (IMP): 80 feasible, 12 non-dominated designs. First 8:
+ L_mm  w1_mm  h_um  Q_ulmin     f1     f2  minCbot_over_Csat  range_ratio  dp_Pa
+ 80.0   1.25  75.0   0.3211 0.0958 0.9771                0.0       5.2353 4.5336
+ 70.0   1.00  75.0   0.2546 0.1197 0.9700                0.0       5.5166 3.9320
+ 65.0   1.00  75.0   0.2546 0.1197 0.9637                0.0       5.3143 3.6511
+ 80.0   1.25 100.0   0.5642 0.1277 0.9276                0.0       5.2856 3.3603
+ 70.0   1.00 100.0   0.4460 0.1596 0.9146                0.0       5.5845 2.9053
+ 65.0   1.00 100.0   0.4460 0.1596 0.9017                0.0       5.3792 2.6978
+ 80.0   1.25 125.0   0.8711 0.1596 0.8604                0.0       5.3372 2.6563
+ 80.0   1.25 150.0   1.2393 0.1915 0.7780                0.0       5.3900 2.1869
+
+Pareto (PDMS): 80 feasible, 5 non-dominated designs. First 8:
+ L_mm  w1_mm  h_um  Q_ulmin     f1     f2  minCbot_over_Csat  range_ratio  dp_Pa
+ 80.0   1.25  75.0   0.3211 0.0958 0.0452             0.9548       5.2353 4.5336
+ 70.0   1.00  75.0   0.2546 0.1197 0.0452             0.9548       5.5166 3.9320
+ 65.0   1.00  75.0   0.2546 0.1197 0.0452             0.9548       5.3143 3.6511
+ 50.0   0.75  75.0   0.1882 0.1596 0.0452             0.9548       5.4485 2.7669
+ 35.0   0.50  75.0   0.1217 0.2394 0.0452             0.9548       5.7266 1.8786
+
+wrote /home/claude/HeleShaw_Project/05_design/output
