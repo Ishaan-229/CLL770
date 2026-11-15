@@ -1,0 +1,17 @@
+# Hydrodynamic validation template (one row per station per flow rate). Theory columns can be pre-filled from 02_analytical/output/theory_stations.csv
+Q_uL_min,station,x_mm,w_mm,tau_1D_Eq2_dyn,tau_axis3D_theory_dyn,tau_2D_HS_model_dyn,tau_CFD_fit_dyn,tau_CFD_fluent_dyn,dev_CFD_vs_Eq2_pct,dev_CFD_vs_3Dtheory_pct,tau20_theory_dyn,tau20_CFD_dyn,tau_cell_theory_dyn,tau_cell_CFD_dyn,Dmax_5pct_mm,Dwall_5pct_mm,Dmax_theory_mm,notes
+0.22,S1,5,1.111,,,,,,,,,,,,,,0.427,
+0.22,S2,15,1.429,,,,,,,,,,,,,,0.586,
+0.22,S3,25,2.000,,,,,,,,,,,,,,0.871,
+0.22,S4,35,3.333,,,,,,,,,,,,,,1.538,
+0.22,S5,45,10.000,,,,,,,,,,,,,,(corner),
+1,S1,5,1.111,,,,,,,,,,,,,,0.427,
+1,S2,15,1.429,,,,,,,,,,,,,,0.586,
+1,S3,25,2.000,,,,,,,,,,,,,,0.871,
+1,S4,35,3.333,,,,,,,,,,,,,,1.538,
+1,S5,45,10.000,,,,,,,,,,,,,,(corner),
+120,S1,5,1.111,,,,,,,,,,,,,,0.427,
+120,S2,15,1.429,,,,,,,,,,,,,,0.586,
+120,S3,25,2.000,,,,,,,,,,,,,,0.871,
+120,S4,35,3.333,,,,,,,,,,,,,,1.538,
+120,S5,45,10.000,,,,,,,,,,,,,,(corner),

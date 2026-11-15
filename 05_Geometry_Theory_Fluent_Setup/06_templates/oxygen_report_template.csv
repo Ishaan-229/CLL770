@@ -1,0 +1,11 @@
+# Oxygen transport reporting template (one row per run). Values from oxygen_post.py (o2_summary.csv) and o2_report UDF output.
+run,Q_uL_min,wall_BC,bottom_model,D_m2s,C_sat_molm3,q_max_molm2s,K_m_molm3,k_pdms_ms,mean_Cw_over_Csat,min_Cw_over_Csat,hypoxic_area_frac,uptake_UDF_mol_s,mdot_balance_mol_s,balance_error_pct,Pe_h_inlet,Da_conv,Phi_pdms,model_prediction_minC_over_Csat,notes
+O_M2_Q022_IMP,0.22,impermeable,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,0,,,,,,,1.22,7.06,0,0.000,
+O_M2_Q022_PDMS,0.22,PDMS Robin,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,5.65e-6,,,,,,,1.22,7.06,25.1,0.950,
+O_M2_Q022_SAT,0.22,saturated,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,1,,,,,,,1.22,7.06,,,
+O_M2_Q1_IMP,1,impermeable,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,0,,,,,,,5.56,1.55,0,0.000,
+O_M2_Q1_PDMS,1,PDMS Robin,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,5.65e-6,,,,,,,5.56,1.55,25.1,0.950,
+O_M2_Q1_SAT,1,saturated,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,1,,,,,,,5.56,1.55,,,
+O_M2_Q120_IMP,120,impermeable,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,0,,,,,,,667,0.0129,0,0.987,
+O_M2_Q120_PDMS,120,PDMS Robin,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,5.65e-6,,,,,,,667,0.0129,25.1,0.987,
+O_M2_Q120_SAT,120,saturated,MM wall flux,3.0e-9,0.178,4.0e-8,6.3e-4,1,,,,,,,667,0.0129,,,

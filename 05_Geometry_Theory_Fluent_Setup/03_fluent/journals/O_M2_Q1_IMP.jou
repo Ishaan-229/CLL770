@@ -1,0 +1,33 @@
+; O_M2_Q1_IMP : oxygen transport on frozen converged flow; impermeable PDMS (worst case, convective supply only)
+/file/read-case-data "H_M2_Q1.cas.h5"
+; The template must already contain: 1 UDS (flux = mass flow rate), libudf loaded,
+; UDS diffusivity = o2_diffusivity, wall_bottom uds flux = udf o2_flux_bottom_mm,
+; wall_top & wall_side uds flux = udf o2_flux_pdms, inlet uds value = 0.178 (see manual Phase 8).
+(load "o2_params.scm")
+(rpsetvar 'o2/kpdms 0)
+/solve/set/equations/flow no     ; freeze velocity/pressure
+/solve/set/equations/uds-0 yes   ; VERIFY
+/solve/monitors/residual/convergence-criteria 1e-8 1e-8 1e-8 1e-8 1e-10   ; VERIFY (one value per equation)
+/solve/iterate 5000
+/define/user-defined/execute-on-demand "o2_report::libudf"
+; ---- post-processing surfaces (SI, metres) ----
+/surface/rake-surface zrake_x5 0.005 0 0 0.005 0 0.000145 146
+/surface/rake-surface yrake_z20_x5 0.005 -0.000555 2e-05 0.005 0.000555 2e-05 801
+/surface/rake-surface zrake_x15 0.015 0 0 0.015 0 0.000145 146
+/surface/rake-surface yrake_z20_x15 0.015 -0.000713571 2e-05 0.015 0.000713571 2e-05 801
+/surface/rake-surface zrake_x25 0.025 0 0 0.025 0 0.000145 146
+/surface/rake-surface yrake_z20_x25 0.025 -0.000999 2e-05 0.025 0.000999 2e-05 801
+/surface/rake-surface zrake_x35 0.035 0 0 0.035 0 0.000145 146
+/surface/rake-surface yrake_z20_x35 0.035 -0.001665 2e-05 0.035 0.001665 2e-05 801
+/surface/rake-surface zrake_x45 0.045 0 0 0.045 0 0.000145 146
+/surface/rake-surface yrake_z20_x45 0.045 -0.004995 2e-05 0.045 0.004995 2e-05 801
+/surface/rake-surface xrake_axis_z20 -0.002 0 2e-05 0.05025 0 2e-05 2001
+/surface/rake-surface xrake_axis_zmid -0.002 0 7.25e-05 0.05025 0 7.25e-05 2001
+/surface/plane-surface plane_z20 xy-plane 2e-05          ; VERIFY
+; ---- ASCII exports read by 04_postprocessing (comma delimited, node values) ----
+/file/export/ascii "exp_O_M2_Q1_IMP_zrakes.csv" zrake_x5 zrake_x15 zrake_x25 zrake_x35 zrake_x45 () yes x-velocity y-velocity z-velocity velocity-magnitude strain-rate-mag pressure uds-0-scalar () no   ; VERIFY
+/file/export/ascii "exp_O_M2_Q1_IMP_yrakes_z20.csv" yrake_z20_x5 yrake_z20_x15 yrake_z20_x25 yrake_z20_x35 yrake_z20_x45 () yes x-velocity y-velocity z-velocity velocity-magnitude strain-rate-mag pressure uds-0-scalar () no   ; VERIFY
+/file/export/ascii "exp_O_M2_Q1_IMP_axis.csv" xrake_axis_z20 xrake_axis_zmid () yes x-velocity y-velocity z-velocity velocity-magnitude strain-rate-mag pressure uds-0-scalar () no   ; VERIFY
+/file/export/ascii "exp_O_M2_Q1_IMP_wall_bottom.csv" wall_bottom () yes wall-shear x-wall-shear y-wall-shear z-wall-shear uds-0-scalar () no   ; VERIFY
+/file/write-case-data "O_M2_Q1_IMP.cas.h5"
+; end

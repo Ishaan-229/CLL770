@@ -1,0 +1,24 @@
+ID,phase,geometry_file,mesh,Q_uL_min,mdot_full_kg_s,physics,BCs,purpose,variables_to_extract,priority
+H01,4,HS_L50_W10_planar.step,M1,0.22,3.5999e-09,laminar steady,mass-flow-inlet / pressure-outlet 0 Pa / no-slip,mesh study,"umax, dp, tau S1-S5 (fit+Fluent), u(z), mass imbalance",core
+H02,4,HS_L50_W10_planar.step,M2,0.22,3.5999e-09,laminar steady,as H01,mesh study + validation,as H01 + y-rakes z=20um + wall export,core
+H03,4,HS_L50_W10_planar.step,M3,0.22,3.5999e-09,laminar steady,as H01,mesh study,as H01,core
+H04,4,HS_L50_W10_planar.step,M1,1,1.6363e-08,laminar steady,as H01,mesh study,as H01,core
+H05,4-5,HS_L50_W10_planar.step,M2,1,1.6363e-08,laminar steady,as H01,mesh study + validation,as H02,core
+H06,4,HS_L50_W10_planar.step,M3,1,1.6363e-08,laminar steady,as H01,mesh study,as H01,core
+H07,5,HS_L50_W10_planar.step,M2,120,1.9636e-06,laminar steady,as H01,validation at Re_Dh~3.6 (inertia check),as H02,core
+H08,5,HS_L50_W10_planar.step,M2,1,1.6363e-08,laminar TRANSIENT start-up (dt 1e-4 s; 0.2 s),as H01,flow development time (paper used transient),"umax(t) at S1, dp(t)",optional
+H09,5,HS_L50_W10_half.step,M2-half,1,8.1817e-09 (half),laminar steady,as H01 + symmetry y=0,verify half-model = full model,tau S1-S5 difference < 0.5 %,optional
+H10,5,HS_L50_W10_ports.step,M2-ports,1,1.6363e-08,laminar steady,inlet/outlet on port tops,port/entrance effect on S1,tau S1-S5 vs H05,recommended
+H11,6,HS_L50_W15_planar.step,M2,1,1.6363e-08,laminar steady,as H01,hyperbola termination effect on S5,"tau S5, d(eps) at S5 vs H05",recommended
+H12,5,HS_L53_W10_planar (generate --L 53 h=0.150),M2,1,1.6363e-08,laminar steady,as H01,reproduce paper geometry (L=5.3 cm h=150 um),tau S1-S5 vs paper Fig. 2E/3A,recommended
+O01,8,H02 frozen flow,M2,0.22,3.5999e-09,UDS O2 + MM wall flux,"inlet C=0.178; top/side impermeable",worst-case O2,"C_w map, C axis, C(y), uptake, hypoxic fraction",core
+O02,8,H02 frozen flow,M2,0.22,3.5999e-09,UDS O2 + MM wall flux,top/side PDMS Robin k=5.65e-6 m/s,realistic PDMS,as O01,core
+O03,8,H02 frozen flow,M2,0.22,3.5999e-09,UDS O2 + MM wall flux,top/side C=C_sat,best case,as O01,core
+O04-06,8,H05 frozen flow,M2,1,1.6363e-08,UDS O2 + MM wall flux,IMP / PDMS / SAT,flow-rate effect,as O01,core
+O07-09,8,H07 frozen flow,M2,120,1.9636e-06,UDS O2 + MM wall flux,IMP / PDMS / SAT,high-flow limit,as O01,core
+O10,8,H05 frozen flow,M2,1,1.6363e-08,UDS O2 + ZERO-ORDER wall flux,IMP,consumption-model comparison + mass-balance/sign test,"uptake vs mdot balance, negative C regions",core
+O11,8,H05 frozen flow,M2,1,1.6363e-08,UDS O2 + volumetric MM sink z<10 um,IMP,consumption-model comparison (Model 2),as O01,optional
+O12,8,H05 frozen flow,M3,1,1.6363e-08,UDS O2 + MM wall flux,IMP,mesh sensitivity of C_w (concentration boundary layer),min C_w and hypoxic fraction M2 vs M3,core
+O13,8,H05 frozen flow,M2,1,1.6363e-08,TRANSIENT UDS O2 (dt 1 s; 2 h),IMP and PDMS,O2 start-up after medium change,"C_w(t) at S1-S5",optional
+S01-S12,9,H05 frozen flow,M2,1,1.6363e-08,UDS O2 + MM wall flux,IMP and PDMS,"sensitivity: OCR x{0.25,1,5}, rho_cell x{0.5,2.5}, K_m x{1,10}, D {2.6,3.3}e-9",min/mean C_w and hypoxic fraction,core (subset)
+D01-D03,10,generate_geometry.py with Pareto candidates,M2,from design_model.py,rho*Q,laminar + UDS O2,PDMS and IMP,verify reduced-order design model,tau S1-S5 and C_w vs design_model predictions,extension

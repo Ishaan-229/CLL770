@@ -1,0 +1,37 @@
+; H_M1_Q1 : laminar steady hydrodynamics, mesh M1, Q = 1 uL/min, mdot = 1.636333e-08 kg/s
+/file/set-tui-version "22.1"   ; harmless if unsupported - delete if it errors
+/file/read-case "template_hydro.cas.h5"
+/file/replace-mesh "mesh_M1_coarse.msh.h5" yes   ; VERIFY (answer may be needed for "discard data?")
+/mesh/check
+/mesh/quality
+/define/boundary-conditions/set/mass-flow-inlet inlet () mass-flow no 1.636333e-08 quit   ; VERIFY
+/solve/set/p-v-coupling 21                ; 20 SIMPLE, 21 SIMPLEC, 24 Coupled
+/solve/set/discretization-scheme/pressure 12   ; 12 second order (14 = PRESTO!)
+/solve/set/discretization-scheme/mom 1         ; 1 second-order upwind
+/solve/monitors/residual/convergence-criteria 1e-8 1e-8 1e-8 1e-8
+/solve/initialize/hyb-initialization
+/solve/iterate 3000
+/report/fluxes/mass-flow no inlet outlet () yes "H_M1_Q1_massflow.flp"   ; VERIFY
+/report/surface-integrals/area-weighted-avg inlet outlet () pressure yes "H_M1_Q1_pressure.srp"   ; VERIFY
+/report/volume-integrals/maximum fluid () velocity-magnitude yes "H_M1_Q1_vmax.vrp"   ; VERIFY
+; ---- post-processing surfaces (SI, metres) ----
+/surface/rake-surface zrake_x5 0.005 0 0 0.005 0 0.000145 146
+/surface/rake-surface yrake_z20_x5 0.005 -0.000555 2e-05 0.005 0.000555 2e-05 801
+/surface/rake-surface zrake_x15 0.015 0 0 0.015 0 0.000145 146
+/surface/rake-surface yrake_z20_x15 0.015 -0.000713571 2e-05 0.015 0.000713571 2e-05 801
+/surface/rake-surface zrake_x25 0.025 0 0 0.025 0 0.000145 146
+/surface/rake-surface yrake_z20_x25 0.025 -0.000999 2e-05 0.025 0.000999 2e-05 801
+/surface/rake-surface zrake_x35 0.035 0 0 0.035 0 0.000145 146
+/surface/rake-surface yrake_z20_x35 0.035 -0.001665 2e-05 0.035 0.001665 2e-05 801
+/surface/rake-surface zrake_x45 0.045 0 0 0.045 0 0.000145 146
+/surface/rake-surface yrake_z20_x45 0.045 -0.004995 2e-05 0.045 0.004995 2e-05 801
+/surface/rake-surface xrake_axis_z20 -0.002 0 2e-05 0.05025 0 2e-05 2001
+/surface/rake-surface xrake_axis_zmid -0.002 0 7.25e-05 0.05025 0 7.25e-05 2001
+/surface/plane-surface plane_z20 xy-plane 2e-05          ; VERIFY
+; ---- ASCII exports read by 04_postprocessing (comma delimited, node values) ----
+/file/export/ascii "exp_H_M1_Q1_zrakes.csv" zrake_x5 zrake_x15 zrake_x25 zrake_x35 zrake_x45 () yes x-velocity y-velocity z-velocity velocity-magnitude strain-rate-mag pressure () no   ; VERIFY
+/file/export/ascii "exp_H_M1_Q1_yrakes_z20.csv" yrake_z20_x5 yrake_z20_x15 yrake_z20_x25 yrake_z20_x35 yrake_z20_x45 () yes x-velocity y-velocity z-velocity velocity-magnitude strain-rate-mag pressure () no   ; VERIFY
+/file/export/ascii "exp_H_M1_Q1_axis.csv" xrake_axis_z20 xrake_axis_zmid () yes x-velocity y-velocity z-velocity velocity-magnitude strain-rate-mag pressure () no   ; VERIFY
+/file/export/ascii "exp_H_M1_Q1_wall_bottom.csv" wall_bottom () yes wall-shear x-wall-shear y-wall-shear z-wall-shear () no   ; VERIFY
+/file/write-case-data "H_M1_Q1.cas.h5"
+; end
